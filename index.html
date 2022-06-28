@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<title>Indicadors LET</title>
+<script lang="javascript" src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@master/dist/latest/bootstrap-autocomplete.min.js"></script>
+<script>
+
+
+
+function calcula(valor){
+    filtre_elec = electricitat.filter(element => element.nommuni == valor);
+    filtre_gas = gas.filter(element => element.nommuni == valor);
+    filtre_aigua = aigua.filter(element => element.nommuni == valor);
+    filtre_residus = residus.filter(element => element.nommuni == valor);
+    filtre_no2 = no2.filter(element => element.nommuni == valor);
+    filtre_pm10 = pm10.filter(element => element.nommuni == valor);
+    filtre_ice = ice.filter(element => element.nommuni == valor);
+    filtre_incendis = incendis.filter(element => element.nommuni == valor);
+    filtre_temp = temp.filter(element => element.nommuni == valor);
+    filtre_ppt = ppt.filter(element => element.nommuni == valor);
+    filtre_estat_12 = estat_rius.filter(element => element.nommuni == valor);
+    filtre_estat_18 = estat_rius.filter(element => element.nommuni_1 == valor);
+    filtre_cob56 = cob56.filter(element => element.nommuni == valor);
+    filtre_cob93 = cob93.filter(element => element.nommuni == valor);
+    filtre_cob00 = cob00.filter(element => element.field_1 == valor);
+    filtre_cob05 = cob05.filter(element => element.field_1 == valor);
+    filtre_cob09 = cob09.filter(element => element.field_1 == valor);
+    filtre_cob15 = cob15.filter(element => element.field_1 == valor);
+    myChart1.destroy();
+    pintar1();
+    myChart2.destroy();
+    pintar2();
+    myChart3.destroy();
+    pintar3();
+    myChart4.destroy();
+    pintar4();
+    myChart5.destroy();
+    pintar5();
+    myChart6.destroy();
+    pintar6();
+    myChart7.destroy();
+    pintar7();
+    myChart8.destroy();
+    pintar8();
+    myChart9.destroy();
+    pintar9();
+}
+
+function canvi(ambit){
+        switch (ambit){
+            case "B30": 
+                var listItems = '<option selected="selected" value="B30">Total àmbit ('+munisB30.length +' municipis) </option>';
+                    for (var i = 0; i < munisB30.length; i++) {
+                        listItems += '<option value="' + munisB30[i].B30+ '">' + munisB30[i].B30+ '</option>';
+                    }
+                break;
+            case "AMB":
+                var listItems = '<option selected="selected" value="AMB">Total àmbit ('+munisAMB.length +' municipis) </option>';
+                for (var i = 0; i < munisAMB.length; i++) {
+                    listItems += '<option value="' + munisAMB[i].AMB + '">' + munisAMB[i].AMB+ '</option>';
+                }
+                break;
+            case "RMB":
+                var listItems = '<option selected="selected" value="RMB">Total àmbit ('+munisRMB.length +' municipis) </option>';
+                for (var i = 0; i < munisRMB.length; i++) {
+                    listItems += '<option value="' + munisRMB[i].RMB + '">' + munisRMB[i].RMB+ '</option>';
+                }
+                break;
+        }
+        calcula(ambit);
+
+        $("#municipis").html(listItems);
+}
+</script>
+<style>
+    .boto{
+        display:none;
+        float:right;
+        position:relative;
+        top: 10px;
+        height:10px;
+        border: none;
+        outline: none !important;
+        background-color: transparent;
+    }
+    .fa-circle-info {
+        color: gray;
+        }
+
+</style>
+</head>
+<body>
+    <div class="container" style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;" >
+        <div class="row" style="height:30px"></div>
+        <div class="row ">
+            <div class="col-1 "></div>
+            <div class="col-md-auto border d-flex align-items-center" style="background-color:rgba(244,175,133,255)">Escull l'àmbit territorial:</div>
+            <div class="col-md-auto border d-flex align-items-center" style="background-color:rgba(255,242,205,255);font-size: 12px;">
+                <select class="form-control basicAutoSelect" style="font-size:12px;font-weight:bold;" name="area" onchange="canvi(this.value)">
+                    <option value="AMB">Area Metropolitana de Barcelona</option>
+                    <option value="B30">B-30</option>
+                    <option value="RMB">Regió Metropolitana de Barcelona</option>
+                </select>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-2 border d-flex align-items-center" style="background-color:rgba(244,175,133,255)">Filtra per municipi:</div>
+            <div class="col-md-auto border d-flex align-items-center" style="background-color:rgba(255,242,205,255);font-size: 12px ;">
+                <select class="form-control basicAutoSelect" style="font-size:12px;font-weight:bold;" name="municipi" id="municipis" onchange="calcula(this.value)" >
+                   
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="width: 98%;" >
+        <div class="row">
+            <div class="col-md-auto border" style="background-color: rgba(164,208,139,255);font-family: Arial, Helvetica, sans-serif;font-weight: bold;">Indicadors Socioecològics</div>
+        </div>
+    </div>
+    <div class="container-fluid border" style="width: 98%;background-color: rgba(225,239,216,255);">
+        <div class="row" style="height: 10px;"></div>
+        <div class="row">
+            <div class="col border border-dark">
+                <button type="button" id="1" class="boto"  onclick="omple('1');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart1" style="width:300px;height:300px;"></canvas>
+               
+            </div>
+            <div class="col border border-dark">
+                <button type="button" id="2" class="boto"  onclick="omple('2');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info" ></i></b></button>
+                <canvas id="myChart2" style="width:300px;height:300px;"></canvas>
+        
+            </div>
+            <div class="col border  border-dark">
+                <button type="button" id="3" class="boto"  onclick="omple('3');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart3" style="width:300px;height:300px;"></canvas>
+               
+            </div>
+            <div class="col border border-dark">
+                <button type="button" id="4" class="boto"  onclick="omple('4');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart4" style="width:300px;height:300px;"></canvas>
+            </div>
+            <div class="col border border-dark">
+                <button type="button" id="5" class="boto"  onclick="omple('5');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart5" style="width:300px;height:300px;"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col border border-dark">
+                <button type="button" id="6" class="boto"  onclick="omple('6');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart6" style="width:300px;height:300px;"></canvas>
+            </div>
+            <div class="col border border-dark">
+                <button type="button" id="7" class="boto"  onclick="omple('7');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart7" style="width:300px;height:300px;"></canvas>
+            </div>
+            <div class="col border border-dark">
+                <button type="button" id="8" class="boto"  onclick="omple('8');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart8" style="width:300px;height:300px;"></canvas>
+            </div>
+            <div class="col border border-dark">
+                <button type="button" id="9" class="boto"  onclick="omple('9');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart9" style="width:300px;height:300px;"></canvas>
+            </div>
+            <div class="col border border-dark">
+                <button type="button" id="10" class="boto"  onclick="omple('10');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+                <canvas id="myChart10" style="width:300px;height:300px;"></canvas>
+            </div>
+        </div>
+</div>
+
+<div class="row" style="height: 30px;"></div>
+<div class="container-fluid" style="width: 98%;" >
+    <div class="row">
+        <div class="col-md-auto border" style="background-color: rgba(164,208,139,255);font-family: Arial, Helvetica, sans-serif;font-weight: bold;">Indicadors Socioeconòmics</div>
+    </div>
+</div>
+<div class="container-fluid border" style="width: 98%;background-color: rgba(225,239,216,255);">
+    <div class="row" style="height: 10px;"></div>
+    <div class="row">
+        <div class="col border border-dark">
+            <button type="button" id="11" class="boto"  onclick="omple('11');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart11" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border border-dark">
+            <button type="button" id="12" class="boto"  onclick="omple('12');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart12" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border  border-dark">
+            <button type="button" id="13" class="boto"  onclick="omple('13');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart13" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border border-dark">
+            <button type="button" id="14" class="boto"  onclick="omple('14');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart14" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border border-dark">
+            <button type="button" id="15" class="boto"  onclick="omple('15');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart15" style="width:300px;height:300px;"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col border border-dark">
+            <button type="button" id="16" class="boto"  onclick="omple('16');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart16" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border border-dark">
+            <button type="button" id="17" class="boto"  onclick="omple('17');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart17" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border border-dark">
+            <button type="button" id="18" class="boto"  onclick="omple('18');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart18" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border border-dark">
+            <button type="button" id="19" class="boto"  onclick="omple('19');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart19" style="width:300px;height:300px;"></canvas>
+        </div>
+        <div class="col border border-dark">
+            <button type="button" id="20" class="boto"  onclick="omple('20');" data-toggle="modal" data-target="#exampleModal"> <b><i class="fa-solid fa-circle-info"></i></b></button>
+            <canvas id="myChart20" style="width:300px;height:300px;"></canvas>
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h6 class="modal-title" id="titol">Info</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div id="contingut" class="modal-body" style="color: gray;">
+        ...
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script>
+Chart.register(ChartDataLabels);
+Chart.defaults.set('plugins.datalabels', {
+    color: '#FFFFFF',
+    display:false
+    });
+Chart.defaults.set('plugins.title', {
+    font: {
+      size: 14
+    }
+});
+
+
+
+function omple(div){
+    switch (div){
+        case "1":  titol='Variabilitat climàtica ';
+                    texte= "Anomalia de la temperatura mitjana i de la precipitació anual respecte un període de referència fixat per l'IPCC (1961-1990)";
+                    temporalitat='2008-2021';
+                    font='SMC';
+                    break;
+        case "2":  titol='Cobertes del sòl';
+                    texte= "Evolució de les cobertes del sòl ";
+                    temporalitat='1987-2017';
+                    font='CREAF';
+                    break;
+        case "3":  titol='Incendis forestals';
+                    texte= "Superfície cremada (1ha)";
+                    temporalitat='1986-2020';
+                    font='GENCAT';
+                    break;
+        case "4":  titol='Funcionalitat del paisatge ';
+                    texte= "Índex de connectivitat ecològica dels espais oberts ";
+                    temporalitat='2015, 2009, 1993, 1956 ';
+                    font='LET';
+                    break;
+        case "5":  titol="Qualitat de l’aigua ";
+                    texte= "Estat ecològic dels rius, indicador que combina la qualitat biològica, fisicoquímica i hidromorfològica  ";
+                    temporalitat='2007-2012, 2013-2018  ';
+                    font='ACA ';
+                    break;
+        case "6":  titol="Consum d'energia ";
+                    texte= "Electricitat i gas natural consumit per sectors i habitant  ";
+                    temporalitat='2012-2019 ';
+                    font='ICAEN';
+                    break;
+        case "7":  titol="Consum d'aigua ";
+                    texte= "Consum d'aigua domèstica per càpita ";
+                    temporalitat='2011-2015 ';
+                    font='AMB';
+                    break;
+        case "8":  titol="Generació de residus ";
+                    texte= "Generació de residus domèstics per habitant ";
+                    temporalitat='2010-2016 ';
+                    font='IDESCAT';
+                    break;
+        
+        case "9":  titol="Contaminació atmosfèrica ";
+                    texte= "Concentració de contaminants pels punts de la Xarxa de Vigilància i Previsió de la Contaminació Atmosfèrica ";
+                    temporalitat='22012-2016 ';
+                    font='Generalitat de Catalunya   ';
+                    break;
+        case "10":  titol="Gasos d’efecte hivernacle ";
+                    texte= "Emissions CO2 equivalents per càpita associat al tipus d’energia i el seu ús ";
+                    temporalitat='2011-2016  ';
+                    font='Diputació de Barcelona ';
+                    break;
+        case "11":  titol="Població ";
+                    texte= "Població i densitat de població per municipi ";
+                    temporalitat='2000-2020 ';
+                    font='IDESCAT ';
+                    break;  
+        case "12":  titol="Nivell de renda  ";
+                    texte= "Renda per càpita segons el seu origen ";
+                    temporalitat='2015-2018 ';
+                    font='INE ';
+                    break;         
+        case "13":  titol="Productivitat ";
+                    texte= "Producte Interior Brut territorial  ";
+                    temporalitat='2011-2018 ';
+                    font='IDESCAT ';
+                    break;
+        case "14":  titol="Atur";
+                    texte= "Taxa d’atur registrat relativitzat pel nombre d’habitants del municipi ";
+                    temporalitat='2015-2020 ';
+                    font='SEPE';
+                    break;
+        case "15":  titol="Desigualtat";
+                    texte= "Índex de desigualtat de Gini ";
+                    temporalitat='2015-2018 ';
+                    font='INE';
+                    break;
+        case "16":  titol="Immigració";
+                    texte= "Població estrangera provinent de països en desenvolupament ";
+                    temporalitat='2000-2020 ';
+                    font='IDESCAT ';
+                    break;
+        case "17":  titol="Nivell socioeconòmic ";
+                    texte= "Índex Socioeconòmic Territorial respecte al total de Catalunya ";
+                    temporalitat='2015-2018 ';
+                    font='IDESCAT ';
+                    break;
+        case "18":  titol="Habitatge ";
+                    texte= "Registre de demanda d'habitatge social protegit per mil habitants ";
+                    temporalitat='2017-2020 ';
+                    font='Cens de Població i Habitatges ';
+                    break;
+        case "19":  titol="Formació";
+                    texte= "Percentatge de població amb estudis primaris o sense cap estudi ";
+                    temporalitat='2015-2018 ';
+                    font='Cens de Població i Habitatges ';
+                    break;
+        case "20":  titol="Innovació ";
+                    texte= "Registre de patents europees per mil habitants ";
+                    temporalitat='2005-2015 ';
+                    font='PATSTAT';
+                    break;         
+    }
+    document.getElementById('titol').innerHTML='<b>'+titol+'</b>';
+    document.getElementById('contingut').innerHTML='<b>Descripció: </b>'+texte + '<br><b>Temporalitat</b>: '+ temporalitat + '<br><b>Font</b>: ' + font;
+}
+</script>
+<script src="grafic1.js"></script>
+<script src="grafic2.js"></script>
+<script src="grafic3.js"></script>
+<script src="grafic4.js"></script>
+<script src="grafic5.js"></script>
+<script src="grafic6.js"></script>
+<script src="grafic7.js"></script>
+<script src="grafic8.js"></script>
+<script src="grafic9.js"></script>
+</body>
+</html>
+<script>
+$(document).ready(function () {
+    d3.csv('munis.csv').then(function(data){
+        munis = data;
+        munisAMB = munis.filter( element => element.AMB != "")
+        munisB30 = munis.filter( element => element.B30 != "")
+        munisRMB = munis.filter( element => element.RMB != "")
+        var listItems = '<option selected="selected" value="0">Total àmbit(36 municipis)</option>';
+        for (var i = 0; i < munisAMB.length; i++) {
+                listItems += '<option value="' + munisAMB[i].AMB+ '">' + munisAMB[i].AMB+ '</option>';
+            }
+
+        $("#municipis").html(listItems);
+        grafic1();
+        grafic2();
+        grafic3();
+        grafic4();
+        grafic5();
+        grafic6();
+        grafic7();
+        grafic8();
+        grafic9();
+        
+    });
+});
+</script>

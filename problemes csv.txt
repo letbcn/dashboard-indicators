@@ -1,0 +1,9 @@
+Coses incorrectes:
+-ice56_15.csv:
+	No estan correctes alguns municipis i les agrupacions (AMB. RMB, B30)
+
+- cobertes56: Accents incorrectes.
+- variabilitat climàtica: igual que ice56_15
+-anom_ppt canvi de majúscules a minúscules de nom camp nommuni
+-ndvi igual que ice56_15
+- estat rius modificat csv afegint àmbits
