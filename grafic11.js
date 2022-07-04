@@ -1,32 +1,41 @@
-function grafic11(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "DZ4:EB8"});
-    //rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Full1']);
-    console.log(rowObject);
+function grafic11() {       
 
-    var labels = rowObject.map(function(e) {
-        return e.Any;
+    d3.csv('data/socioeconomics/poblacio/poblacio_2000_2020.csv').then(function(data){
+        poblacio = data;
+        filtre_pob = poblacio;
+        filtre_pob = poblacio.filter(element => element.categoria == "AMB");
+        d3.csv('data/socioeconomics/poblacio/densitat_2000_2020.csv').then(function(data){
+            densitat = data;
+            filtre_densitat= densitat;
+            filtre_densitat = densitat.filter(element => element.categoria == "AMB");
+        pintar11();
+        }); 
+    });
+}
+
+function pintar11() {       
+
+
+    data_pob= filtre_pob.map(function(e) {
+        return  [e.poblacio_2000,e.poblacio_2005,e.poblacio_2010,e.poblacio_2015,e.poblacio_2020];
      });
 
-    var data_poblacio = rowObject.map(function(e) {
-        return e.poblacio;
+     
+    data_densitat= filtre_densitat.map(function(e) {
+        return  [e.densitat_2000,e.densitat_2005,e.densitat_2010,e.densitat_2015,e.densitat_2020];
      });
-
-     var data_densitat = rowObject.map(function(e) {
-        return e.densitat;
-     });
-
     const ctx = document.getElementById('myChart11').getContext('2d');
-    const myChart = new Chart(ctx, {
+    myChart11 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2000","2005","2010","2015","2020"],
             datasets: [
                 
                 {
                     type: 'line',
                     label: "Densitat",
                     yAxisID: 'B',
-                    data: data_densitat,
+                    data: data_densitat[0],
                     borderColor: 'rgb(204,153,255,0)',
                     pointRadius:5,
                     pointBackgroundColor:'rgb(204,153,255)'
@@ -36,7 +45,7 @@ function grafic11(workbook) {
                     type: 'bar',
                     label: "Població",
                     yAxisID: 'A',
-                    data: data_poblacio,
+                    data: data_pob[0],
                     backgroundColor: 'rgba(81,35,115, 1)',
                     datalabels: {
                         display:false,

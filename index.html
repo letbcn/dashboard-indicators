@@ -41,6 +41,8 @@ function calcula(valor){
     filtre_cob05 = cob05.filter(element => element.field_1 == valor);
     filtre_cob09 = cob09.filter(element => element.field_1 == valor);
     filtre_cob15 = cob15.filter(element => element.field_1 == valor);
+    filtre_pob = poblacio.filter(element => element.categoria == valor);
+    filtre_densitat = densitat.filter(element => element.categoria == valor);
     myChart1.destroy();
     pintar1();
     myChart2.destroy();
@@ -59,6 +61,8 @@ function calcula(valor){
     pintar8();
     myChart9.destroy();
     pintar9();
+    myChart11.destroy();
+    pintar11();
 }
 
 function canvi(ambit){
@@ -386,6 +390,7 @@ function omple(div){
 <script src="grafic7.js"></script>
 <script src="grafic8.js"></script>
 <script src="grafic9.js"></script>
+<script src="grafic11.js"></script>
 </body>
 </html>
 <script>
@@ -410,7 +415,7 @@ $(document).ready(function () {
         grafic7();
         grafic8();
         grafic9();
-        
+        grafic11();
     });
 });
 </script>
