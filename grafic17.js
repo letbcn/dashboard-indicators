@@ -1,12 +1,17 @@
-function grafic17(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "DQ4:DR8"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
-     });
+function grafic17() {       
 
-    var dades = rowObject.map(function(e) {
-        return e["ist"];
+    d3.csv('data/socioeconomics/ist_2019_2015.csv').then(function(data){
+        ist = data;
+        filtre_ist = ist;
+        filtre_ist = ist.filter(element => element.municipi == "AMB");
+        pintar17();
+    });
+}
+
+function pintar17() {      
+    
+    data_ist = filtre_ist.map(function(e) {
+        return  [e["2015"],e["2016"],e["2017"],e["2018"],e["2019"]];
      });
 
     const ctx = document.getElementById('myChart17').getContext('2d');
@@ -14,16 +19,15 @@ function grafic17(workbook) {
     gradient.addColorStop(0, 'rgba(112,173,71,1)');   
     gradient.addColorStop(1, 'rgba(94,145,60,1)');
 
-    const myChart = new Chart(ctx, {
+    myChart17 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2015","2016","2017","2018","2019"],
             datasets: [
                 {
                     type: 'bar',
-                   // label: "Índex ",
-                    data: dades,
-                    backgroundColor: gradient
+                    data: data_ist[0],
+                    backgroundColor: 'rgba(112,173,71,1)'
                 }
             ]
         },
