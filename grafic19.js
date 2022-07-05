@@ -24,7 +24,7 @@ function pintar19() {
             datasets: [
                 {
                     type: 'bar',
-                    label: "Baixa qualificació",
+                    label: "Estudis baixos",
                     data: data_estudis[0],
                     backgroundColor: 'rgba(59,100,143,1)',
                 }/*,
