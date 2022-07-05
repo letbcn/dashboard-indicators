@@ -21,7 +21,7 @@ function pintar16() {
             datasets: [
                 {
                     type: 'bar',
-                    data: data_gini[0],
+                    data: data_immigra[0],
                     backgroundColor: 'rgba(95,95,95,1)',
                 }
             ]
