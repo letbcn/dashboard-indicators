@@ -51,6 +51,7 @@ function calcula(valor){
     filtre_ist = ist.filter(element => element.municipi == valor);
     filtre_hab = hab.filter(element => element.nommuni == valor);
     filtre_estudis = estudis.filter(element => element.nommuni == valor);
+    filtre_patents = patents.filter(element => element.nommuni == valor);
     myChart1.destroy();
     pintar1();
     myChart2.destroy();
@@ -87,6 +88,8 @@ function calcula(valor){
     pintar18();
     myChart19.destroy();
     pintar19();
+    myChart20.destroy();
+    pintar20();
 }
 
 function canvi(ambit){
@@ -423,6 +426,7 @@ function omple(div){
 <script src="grafic17.js"></script>
 <script src="grafic18.js"></script>
 <script src="grafic19.js"></script>
+<script src="grafic20.js"></script>
 
 </body>
 </html>
@@ -457,6 +461,7 @@ $(document).ready(function () {
         grafic17();
         grafic18();
         grafic19();
+        grafic20();
     });
 });
 </script>

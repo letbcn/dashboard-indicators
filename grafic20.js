@@ -1,29 +1,33 @@
-function grafic20(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "DW4:DX12"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
-     });
+function grafic20() {       
 
-    var dades = rowObject.map(function(e) {
-        return e["patents"];
-     });
+    d3.csv('data/socioeconomics/patents_2005_2015.csv').then(function(data){
+        patents = data;
+        filtre_patents = patents;
+        filtre_patents = patents.filter(element => element.nommuni == "AMB");
+        pintar20();
+    });
+}
 
+function pintar20() {      
+    
+    data_patents = filtre_patents.map(function(e) {
+        return  [e["2005"],e["2006"],e["2007"],e["2008"],e["2009"],e["2010"],e["2011"],e["2012"],e["2013"],e["2014"],e["2015"]];
+     });     
 
 
     const ctx = document.getElementById('myChart20').getContext('2d');
     var gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, 'rgba(182,169,44,0.2)');   
     gradient.addColorStop(1, 'rgba(182,169,44,1)');
-    const myChart = new Chart(ctx, {
+    myChart20 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015"],
             datasets: [
                 {
                     type: 'bar',
                    // label: "Patents ",
-                    data: dades,
+                    data: data_patents[0],
                     backgroundColor:'rgba(182,169,44,1)',
                 }
             ]
@@ -53,7 +57,6 @@ function grafic20(workbook) {
                 A: {
                     type: 'linear',
                     position: 'left',
-                    max:0.20,
                     title:{
                         display:true,
                         text:["Nombre de patents europees","per 1000 habitants"]
