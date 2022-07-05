@@ -1,38 +1,39 @@
-function grafic19(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "DJ4:DL7"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
-     });
+function grafic19() {       
 
-    var data_salari = rowObject.map(function(e) {
-        return e["baixa_quali"]*100;
-     });
+    d3.csv('data/socioeconomics/estudis_baixos_2019_2015.csv').then(function(data){
+        estudis = data;
+        filtre_estudis = estudis;
+        filtre_estudis = estudis.filter(element => element.nommuni == "AMB");
+        pintar19();
+    });
+}
 
-     var data_pensions = rowObject.map(function(e) {
-        return e["sense_estudis"]*100;
+function pintar19() {      
+    
+    data_estudis = filtre_estudis.map(function(e) {
+        return  [e["2015"],e["2016"],e["2017"],e["2018"],e["2019"]];
      });
 
      
 
     const ctx = document.getElementById('myChart19').getContext('2d');
-    const myChart = new Chart(ctx, {
+    myChart19 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2015","2016","2017","2018","2019"],
             datasets: [
                 {
                     type: 'bar',
                     label: "Baixa qualificació",
-                    data: data_salari,
+                    data: data_estudis[0],
                     backgroundColor: 'rgba(59,100,143,1)',
-                },
+                }/*,
                 {
                     type: 'bar',
                     label: "Sense estudis",
                     data: data_pensions,
                     backgroundColor: 'rgba(143,162,212,1)',
-                }
+                }*/
 
             ]
         },
