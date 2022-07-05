@@ -1,26 +1,30 @@
-function grafic13(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "CZ4:DA7"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
-     });
+function grafic13() {       
 
-    var dades = rowObject.map(function(e) {
-        return e["PIB"];
-     });
+    d3.csv('data/socioeconomics/pib_2011_2019.csv').then(function(data){
+        prod = data;
+        filtre_prod = prod;
+        filtre_prod = prod.filter(element => element.municipi == "AMB");
+        pintar13();
+    });
+}
 
+function pintar13() {     
+
+    data_prod = filtre_prod.map(function(e) {
+        return  [e.pib_2011,e.pib_2012,e.pib_2013,e.pib_2014,e.pib_2015,e.pib_2016,e.pib_2017,e.pib_2018,e.pib_2019];
+     });
 
 
     const ctx = document.getElementById('myChart13').getContext('2d');
-    const myChart = new Chart(ctx, {
+    myChart13 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2011","2012","2013","2014","2015","2016","2017","2018","2019"],
             datasets: [
                 {
                     type: 'bar',
                     //label: "PIB",
-                    data: dades,
+                    data: data_prod[0],
                     backgroundColor: 'rgba(46,117,182,1)',
                 }
             ]
