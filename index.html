@@ -49,6 +49,7 @@ function calcula(valor){
     filtre_gini = gini.filter(element => element.nommuni == valor);
     filtre_immigra = immigra.filter(element => element["categoria %"] == valor);
     filtre_ist = ist.filter(element => element.municipi == valor);
+    filtre_hab = hab.filter(element => element.nommuni == valor);
     myChart1.destroy();
     pintar1();
     myChart2.destroy();
@@ -81,6 +82,8 @@ function calcula(valor){
     pintar16();
     myChart17.destroy();
     pintar17();
+    myChart18.destroy();
+    pintar18();
 }
 
 function canvi(ambit){
@@ -415,6 +418,7 @@ function omple(div){
 <script src="grafic15.js"></script>
 <script src="grafic16.js"></script>
 <script src="grafic17.js"></script>
+<script src="grafic18.js"></script>
 
 </body>
 </html>
@@ -447,6 +451,7 @@ $(document).ready(function () {
         grafic15();
         grafic16();
         grafic17();
+        grafic18();
     });
 });
 </script>

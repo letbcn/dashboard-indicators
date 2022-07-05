@@ -1,30 +1,33 @@
-function grafic18(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "ED4:EE12"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
-     });
+function grafic18() {       
 
-    var dades = rowObject.map(function(e) {
-        return e["demanda_hab"];
-     });
+    d3.csv('data/socioeconomics/demanda_habitatge_2012_2020.csv').then(function(data){
+        hab = data;
+        filtre_hab = hab;
+        filtre_hab = hab.filter(element => element.nommuni == "AMB");
+        pintar18();
+    });
+}
 
+function pintar18() {      
+    
+    data_hab = filtre_hab.map(function(e) {
+        return  [e.hab_2012,e.hab_2013,e.hab_2014,e.hab_2015,e.hab_2016,e.hab_2017,e.hab_2018,e.hab_2019,e.hab_2020];
+     });
 
 
     const ctx = document.getElementById('myChart18').getContext('2d');
     var gradient = ctx.createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, 'rgba(255,192,0,1)');   
     gradient.addColorStop(1, 'rgba(214,161,0,1)');
-    const myChart = new Chart(ctx, {
+    myChart18 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2012","2013","2014","2015","2016","2017","2018","2019"],
             datasets: [
                 {
                     type: 'bar',
-                   // label: "Demanda ",
-                    data: dades,
-                    backgroundColor: gradient                    
+                    data: data_hab[0],
+                    backgroundColor: 'rgba(255,192,0,1)'                    
                 }
             ]
         },
