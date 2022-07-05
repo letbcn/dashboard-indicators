@@ -11,7 +11,7 @@ function grafic16() {
 function pintar16() {      
     
     data_immigra = filtre_immigra.map(function(e) {
-        return  [e["2000"],e["2005"],e["2010"],e["20015"],e["2020"]];
+        return  [e["2000"],e["2005"],e["2010"],e["2015"],e["2020"]];
      });
        const ctx = document.getElementById('myChart16').getContext('2d');
     myChart16 = new Chart(ctx, {
