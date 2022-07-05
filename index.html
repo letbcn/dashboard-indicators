@@ -46,6 +46,7 @@ function calcula(valor){
     filtre_atur = atur.filter(element => element.nommuni== valor);
     filtre_prod = prod.filter(element => element.municipi== valor);
     filtre_renda = renda.filter(element => element.nommuni == valor);
+    filtre_gini = gini.filter(element => element.nommuni == valor);
     myChart1.destroy();
     pintar1();
     myChart2.destroy();
@@ -72,6 +73,8 @@ function calcula(valor){
     pintar13();
     myChart14.destroy();
     pintar14();
+    myChart15.destroy();
+    pintar15();
 }
 
 function canvi(ambit){
@@ -403,6 +406,7 @@ function omple(div){
 <script src="grafic12.js"></script>
 <script src="grafic13.js"></script>
 <script src="grafic14.js"></script>
+<script src="grafic15.js"></script>
 </body>
 </html>
 <script>
@@ -430,8 +434,8 @@ $(document).ready(function () {
         grafic11();
         grafic12();
         grafic13();
-        
         grafic14();
+        grafic15();
     });
 });
 </script>

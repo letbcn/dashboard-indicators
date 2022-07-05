@@ -1,26 +1,28 @@
-function grafic15(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "EI4:EJ9"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
+function grafic15() {       
+
+    d3.csv('data/socioeconomics/gini_2015_2019.csv').then(function(data){
+        gini = data;
+        filtre_gini = gini;
+        filtre_gini = gini.filter(element => element.nommuni == "AMB");
+        pintar15();
+    });
+}
+
+function pintar15() {     
+
+    data_gini = filtre_gini.map(function(e) {
+        return  [e.gini2015,e.gini2016,e.gini2017,e.gini2018,e.gini2019];
      });
-
-    var dades = rowObject.map(function(e) {
-        return e["aturs"];
-     });
-
-
-
     const ctx = document.getElementById('myChart15').getContext('2d');
-    const myChart = new Chart(ctx, {
+    myChart15 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2015","2016","2017","2018","2019"],
             datasets: [
                 {
                     type: 'bar',
                     //label: "Índex ",
-                    data: dades,
+                    data: data_gini[0],
                     backgroundColor: 'rgba(95,95,95,1)',
                 }
             ]
