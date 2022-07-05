@@ -1,26 +1,27 @@
-function grafic16(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "DN4:DO17"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
+function grafic16() {       
+
+    d3.csv('data/socioeconomics/extrangers_2000_2020.csv').then(function(data){
+        immigra = data;
+        filtre_immigra = immigra;
+        filtre_immigra = immigra.filter(element => element["categoria %"] == "AMB");
+        pintar16();
+    });
+}
+
+function pintar16() {      
+    
+    data_immigra = filtre_immigra.map(function(e) {
+        return  [e["2000"],e["2005"],e["2010"],e["20015"],e["2020"]];
      });
-
-    var dades = rowObject.map(function(e) {
-        return e["poblacio_extranjera"] * 100;
-     });
-
-
-
-    const ctx = document.getElementById('myChart16').getContext('2d');
-    const myChart = new Chart(ctx, {
+       const ctx = document.getElementById('myChart16').getContext('2d');
+    myChart16 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2000","2005","2010","2015","2020"],
             datasets: [
                 {
                     type: 'bar',
-                   // label: "Índex ",
-                    data: dades,
+                    data: data_gini[0],
                     backgroundColor: 'rgba(95,95,95,1)',
                 }
             ]
