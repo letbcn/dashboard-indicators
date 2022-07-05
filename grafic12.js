@@ -1,67 +1,33 @@
-function grafic12(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "DC4:DH8"});
-    //delete rowObject[1]
-    var labels = rowObject.map(function(e) {
-        return e["Any"];
+function grafic12() {       
+
+    d3.csv('data/socioeconomics/renda_2019_2010.csv').then(function(data){
+        renda = data;
+        filtre_renda = renda;
+        filtre_renda = renda.filter(element => element.nommuni == "AMB");
+        pintar12();
+    });
+}
+
+function pintar12() {     
+
+    data_renda = filtre_renda.map(function(e) {
+        return  [e.rfdb_2010,e.rfdb_2011,e.rfdb_2012,e.rfdb_2013,e.rfdb_2014,e.rfdb_2015,e.rfdb_2016,e.rfdb_2017,e.rfdb_2018,e.rfdb_2019];
      });
-
-    var data_salari = rowObject.map(function(e) {
-        return e["Salari"];
-     });
-
-     var data_pensions = rowObject.map(function(e) {
-        return e["Pensions"];
-     });
-
-     var data_altres = rowObject.map(function(e) {
-        return e["Altres ingresos"];
-     });
-
-     var data_atur = rowObject.map(function(e) {
-        return e["Atur"];
-     });
-
-     var data_prestacions = rowObject.map(function(e) {
-        return e["Altres prestacions"];
-     });
-
-
 
     const ctx = document.getElementById('myChart12').getContext('2d');
-    const myChart = new Chart(ctx, {
+
+   
+
+    myChart12 = new Chart(ctx, {
         
         data: {
-            labels: labels,
+            labels: ["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019"],
             datasets: [
                 {
                     type: 'bar',
-                    label: "Salari",
-                    data: data_salari,
-                    backgroundColor: 'rgba(68,114,196,1)',
-                },
-                {
-                    type: 'bar',
-                    label: "Pensions",
-                    data: data_pensions,
-                    backgroundColor: 'rgba(165,165,165,1)',
-                },
-                {
-                    type: 'bar',
-                    label: "Altres ingressos",
-                    data: data_altres,
+                    label: "Renda",
+                    data: data_renda[0],
                     backgroundColor: 'rgba(91,155,213,1)',
-                },
-                {
-                    type: 'bar',
-                    label: "Atur",
-                    data: data_atur,
-                    backgroundColor: 'rgba(38,68,120,1)',
-                },
-                {
-                    type: 'bar',
-                    label: "Altres prestacions",
-                    data: data_prestacions,
-                    backgroundColor: 'rgba(99,99,99,1)',
                 }
 
             ]
@@ -95,11 +61,8 @@ function grafic12(workbook) {
                   }
             },
              scales: {
-                x: {
-                    stacked: true,
-                    },
+                
                     y: {
-                    stacked: true,
                     title: {
                         display: true,
                         text: 'Renda per càpita (€)'

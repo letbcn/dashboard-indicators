@@ -45,6 +45,7 @@ function calcula(valor){
     filtre_densitat = densitat.filter(element => element.categoria == valor);
     filtre_atur = atur.filter(element => element.nommuni== valor);
     filtre_prod = prod.filter(element => element.municipi== valor);
+    filtre_renda = renda.filter(element => element.nommuni == valor);
     myChart1.destroy();
     pintar1();
     myChart2.destroy();
@@ -65,6 +66,8 @@ function calcula(valor){
     pintar9();
     myChart11.destroy();
     pintar11();
+    myChart12.destroy();
+    pintar12();
     myChart13.destroy();
     pintar13();
     myChart14.destroy();
@@ -397,6 +400,7 @@ function omple(div){
 <script src="grafic8.js"></script>
 <script src="grafic9.js"></script>
 <script src="grafic11.js"></script>
+<script src="grafic12.js"></script>
 <script src="grafic13.js"></script>
 <script src="grafic14.js"></script>
 </body>
@@ -424,7 +428,9 @@ $(document).ready(function () {
         grafic8();
         grafic9();
         grafic11();
+        grafic12();
         grafic13();
+        
         grafic14();
     });
 });
