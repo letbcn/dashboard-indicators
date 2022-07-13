@@ -49,37 +49,37 @@ function pintar5() {
                 {
                     type: 'bar',
                    label: 'Molt bo',
-                    data: [valor_mb_18,valor_mb_18],
+                    data: [valor_mb_12,valor_mb_18],
                     backgroundColor: 'rgb(146,208,80)'
                 },
                 {
                   type: 'bar',
                  label: 'Bo',
-                  data: [valor_b_18,valor_b_18],
+                  data: [valor_b_12,valor_b_18],
                   backgroundColor: 'rgb(84,130,53)'
               },
               {
                 type: 'bar',
                 label: 'Mediocre',
-                data: [valor_mediocre_18,valor_mediocre_18],
+                data: [valor_mediocre_12,valor_mediocre_18],
                 backgroundColor: 'rgb(255,192,0)'
               },
               {
                 type: 'bar',
                 label: 'Deficient',
-                data: [valor_deficient_18,valor_deficient_18],
+                data: [valor_deficient_12,valor_deficient_18],
                 backgroundColor: 'rgb(255,102,0)'
               },
               {
                 type: 'bar',
                 label: 'Dolent',
-                data: [valor_dolent_18,valor_dolent_18],
+                data: [valor_dolent_12,valor_dolent_18],
                 backgroundColor: 'rgb(222,0,0)'
               },
               {
                 type: 'bar',
                 label: 'Dades parcials',
-                data:[valor_dp_18,valor_dp_18],
+                data:[valor_dp_12,valor_dp_18],
                 backgroundColor: 'rgb(222,235,247)'
               },
               {
@@ -141,7 +141,7 @@ function pintar5() {
                   stacked: true,
                   title: {
                       display: true,
-                      text: 'Estat ecològic del riu(%)'
+                      text: 'Estat ecològic dels rius (%)'
                     },
                   ticks: {
                       min: 0,

@@ -41,7 +41,7 @@ function pintar3(workbook) {
                                 label += ': ';
                             }
                             if (context.parsed.y !== null) {
-                                label += context.parsed.y.toFixed(3) +" ha.";;
+                                label += Math.round(context.parsed.y) +" ha.";;
                             }
                             return label;
                         }

@@ -4,11 +4,11 @@ function grafic2() {
     d3.csv('data/cobertes/cobertes_1956.csv').then(function(data){
         cob56 = data;
         filtre_cob56= cob56;
-        filtre_cob56 = cob56.filter(element => element.nommuni == "AMB");
+        filtre_cob56 = cob56.filter(element => element.field_1 == "AMB");
         d3.csv('data/cobertes/cobertes_1993.csv').then(function(data){
             cob93 = data;
             filtre_cob93= cob93;
-            filtre_cob93 = cob93.filter(element => element.nommuni == "AMB");
+            filtre_cob93 = cob93.filter(element => element.field_1 == "AMB");
             d3.csv('data/cobertes/cobertes_2000.csv').then(function(data){
                 cob00 = data;
                 filtre_cob00= cob00;

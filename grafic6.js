@@ -32,7 +32,7 @@ function pintar6(){
         data: {
             labels: ["2013","2014","2015","2016","2017","2018","2019","2020"],
             datasets: [
-                {
+                /*{
                     type: 'bar',
                     label: "gas primari",
                     data: [],
@@ -49,14 +49,21 @@ function pintar6(){
                     label: "Gas Terciari",
                     data: [],
                     backgroundColor: 'rgba(255,192,0,1)',
-                },
+                },*/
                 {
                     type: 'bar',
-                    label: "Gas domèstic",
+                    label: "Gas per càpita",
                     data: data_gas[0],
                     spanGaps: true,
                     backgroundColor: 'rgba(91,155,213,1)',
                 },
+                {
+                    type: 'bar',
+                    label: "Electricitat per càpita",
+                    data: data_elec[0],
+                    backgroundColor: 'rgba(99,99,99,1)'
+                }
+                /*,
                 {
                     type: 'bar',
                     label: "E. primari",
@@ -74,13 +81,7 @@ function pintar6(){
                     label: "E. terciari",
                     data: [],
                     backgroundColor: 'rgba(158,72,14,1)',
-                },
-                {
-                    type: 'bar',
-                    label: "E. domèstic",
-                    data: data_elec[0],
-                    backgroundColor: 'rgba(99,99,99,1)',
-                }
+                }*/
 
             ]
         },

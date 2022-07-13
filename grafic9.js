@@ -58,7 +58,7 @@ function pintar9() {
             datasets: [
                 {
                     type: 'bar',
-                    label: "pm\u00B9\u2070",
+                    label: "pm10",
                     data:  [valor_pm10_15,valor_pm10_16,valor_pm10_17,valor_pm10_18,valor_pm10_19,valor_pm10_20,valor_pm10_21],
                     backgroundColor: 'rgba(95,95,95,1)',
                 },
@@ -70,7 +70,7 @@ function pintar9() {
                 },*/
                 {
                     type: 'bar',
-                    label: "N\u00B2O",
+                    label: "NO\u2082",
                     data:  [valor_no2_15,valor_no2_16,valor_no2_17,valor_no2_18,valor_no2_19,valor_no2_20,valor_no2_21],
                     backgroundColor: 'rgba(179,179,179,1)',
                 },
@@ -95,7 +95,7 @@ function pintar9() {
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'Emission de pm\u00B9\u2070, pm\u00B2\u00B7\u2075 i N\u00B2O (ppm)'
+                        text: 'Emission de pm10 i NO\u2082 (ppm)'
                       }
                 }
             }

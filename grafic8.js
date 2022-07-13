@@ -52,7 +52,7 @@ function pintar8(){
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'Residus kg per càpita i dia'
+                        text: 'kg per càpita i dia'
                       }
                 }
             }
