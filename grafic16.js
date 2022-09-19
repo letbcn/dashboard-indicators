@@ -3,7 +3,7 @@ function grafic16() {
     d3.csv('data/socioeconomics/extrangers_2000_2020.csv').then(function(data){
         immigra = data;
         filtre_immigra = immigra;
-        filtre_immigra = immigra.filter(element => element["categoria %"] == "AMB");
+        filtre_immigra = immigra.filter(element => element["municipi %"] == "AMB");
         pintar16();
     });
 }
