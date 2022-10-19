@@ -18,7 +18,7 @@ function pintar10(){
             datasets: [
                 {
                     type: 'bar',
-                    data: [filtre_gasos[0]['ghg_2005_t'],filtre_gasos[0]['ghg_2006_t'],filtre_gasos[0]['ghg_2007_t'],filtre_gasos[0]['ghg_2008_t'],filtre_gasos[0]['ghg_2009_t'],filtre_gasos[0]['ghg_2010_t'],filtre_gasos[0]['ghg_2011_t'],filtre_gasos[0]['ghg_2012_t'],filtre_gasos[0]['ghg_2013_t'],filtre_gasos[0]['ghg_2014_t'],filtre_gasos[0]['ghg_2015_t'],filtre_gasos[0]['ghg_2016_t'],filtre_gasos[0]['ghg_2017_t']],
+                    data: [filtre_gasos[0]['ghg_2005'],filtre_gasos[0]['ghg_2006'],filtre_gasos[0]['ghg_2007'],filtre_gasos[0]['ghg_2008'],filtre_gasos[0]['ghg_2009'],filtre_gasos[0]['ghg_2010'],filtre_gasos[0]['ghg_2011'],filtre_gasos[0]['ghg_2012'],filtre_gasos[0]['ghg_2013'],filtre_gasos[0]['ghg_2014'],filtre_gasos[0]['ghg_2015'],filtre_gasos[0]['ghg_2016'],filtre_gasos[0]['ghg_2017']],
                     backgroundColor: 'rgba(180, 162, 149,1)',
                 }
             ]
