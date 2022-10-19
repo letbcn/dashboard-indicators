@@ -1,84 +1,25 @@
-function grafic6(workbook) {       
-    var rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Dashboard (3)'], {range: "BU77:CB87"});
-    //rowObject = XLSX.utils.sheet_to_json(workbook.Sheets['Full1']);
-    console.log(rowObject);
+function grafic10() {       
 
-    var labels = rowObject.map(function(e) {
-        return e["tCO2/hab."];
-     });
-
-     var data_gas = rowObject.map(function(e) {
-        return e["Gas natural"];
-     });
-     var data_ele = rowObject.map(function(e) {
-        return e["Electricitat"];
-     });
-     var data_residus = rowObject.map(function(e) {
-        return e["Residus"];
-     });
-     var data_gasoil = rowObject.map(function(e) {
-        return e["Gasoil"];
-     });
-     var data_hidraulica= rowObject.map(function(e) {
-        return e["Hidraulica"];
-     });
-     var data_transport = rowObject.map(function(e) {
-        return e["Transport"];
-     });
-     var data_glp = rowObject.map(function(e) {
-        return e["GLP"];
-     });
+    d3.csv('data/ghg_2005_2017_municipis_ambits_1.csv').then(function(data){
+        gasos = data;
+        filtre_gasos = gasos;
+        filtre_gasos= filtre_gasos.filter(element => element.nommuni == "AMB");
+        pintar10();
+        }); 
+}
 
 
-
-
+function pintar10(){
     const ctx = document.getElementById('myChart10').getContext('2d');
-    const myChart = new Chart(ctx, {
+    myChart10 = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels:labels,
+            labels: ["2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],
             datasets: [
-                   {
-                     label: 'Gas Natural',
-                    data: data_gas,
-                    backgroundColor: 'rgba(237,125,49, 1)',
-                    stack: 'Stack 0'
-                },
                 {
-                    label: 'Electricitat',
-                    data: data_ele,
-                    backgroundColor: 'rgba(165,165,165, 1)',
-                    stack: 'Stack 0'
-                },
-                {
-                    label: 'Residus',
-                    data: data_residus,
-                    backgroundColor: 'rgba(255,192,0, 1)',
-                    stack: 'Stack 0'
-                },
-                {
-                    label: 'Gasoil',
-                    data: data_gasoil,
-                    backgroundColor: 'rgba(91,155,213, 1)',
-                    stack: 'Stack 0'
-                },
-                {
-                    label: 'GLP',
-                    data: data_glp,
-                    backgroundColor: 'rgba(112,173,71, 1)',
-                    stack: 'Stack 0'
-                },
-                {
-                    label: 'Hidràulica',
-                    data: data_hidraulica,
-                    backgroundColor: 'rgba(197,224,180, 1)',
-                    stack: 'Stack 0'
-                },
-                {
-                    label: 'Transport',
-                    data: data_transport,
-                    backgroundColor: 'rgba(158,72,14, 1)',
-                    stack: 'Stack 0'
+                    type: 'bar',
+                    data: [filtre_gasos[0]['ghg_2005_t'],filtre_gasos[0]['ghg_2006_t'],filtre_gasos[0]['ghg_2007_t'],filtre_gasos[0]['ghg_2008_t'],filtre_gasos[0]['ghg_2009_t'],filtre_gasos[0]['ghg_2010_t'],filtre_gasos[0]['ghg_2011_t'],filtre_gasos[0]['ghg_2012_t'],filtre_gasos[0]['ghg_2013_t'],filtre_gasos[0]['ghg_2014_t'],filtre_gasos[0]['ghg_2015_t'],filtre_gasos[0]['ghg_2016_t'],filtre_gasos[0]['ghg_2017_t']],
+                    backgroundColor: 'rgba(180, 162, 149,1)',
                 }
             ]
         },
@@ -92,31 +33,14 @@ function grafic6(workbook) {
                     position:'bottom',
                     align:'right',
                     display:false       
-                },
-                datalabels: {
-                    //display:'auto',
-                    display:false,
-                    formatter: function(value, context) {
-                        return value.toFixed(1);
-                      },
-                    labels: {
-                      title: {
-                        font: {
-                          color:'white'
-                        }
-                      }
-                    }
-                  }
+                }
             },
+            
             scales: {
-                x: {
-                    stacked: true,
-                    },
                 y: {
-                    stacked: true,
                     title: {
                         display: true,
-                        text: ['Emission de CO\u00B2','(tones de CO\u00B2 equivalent per habitant )']
+                        text: ['Emissions GEH(tCO\u00B2)','per càpita per municipi']
                       }
                 },
             }

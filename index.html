@@ -52,6 +52,7 @@ function calcula(valor){
     filtre_hab = hab.filter(element => element.nommuni == valor);
     filtre_estudis = estudis.filter(element => element.nommuni == valor);
     filtre_patents = patents.filter(element => element.nommuni == valor);
+    filtre_gasos = gasos.filter(element => element.nommuni == valor);
     myChart1.destroy();
     pintar1();
     myChart2.destroy();
@@ -70,6 +71,8 @@ function calcula(valor){
     pintar8();
     myChart9.destroy();
     pintar9();
+    myChart10.destroy();
+    pintar10();
     myChart11.destroy();
     pintar11();
     myChart12.destroy();
@@ -349,8 +352,8 @@ function omple(div){
                     font='Departament de Medi Ambient i Sostenibilitat.';
                     break;
         case "10":  titol="Gasos d’efecte hivernacle ";
-                    texte= "Emissions CO2 equivalents per càpita associat al tipus d’energia i el seu ús ";
-                    temporalitat='2011-2016  ';
+                    texte= "Emissions GEH(tCO2) per capita per municipi";
+                    temporalitat='2005-2017  ';
                     font='Diputació de Barcelona ';
                     break;
         case "11":  titol="Població ";
@@ -417,6 +420,7 @@ function omple(div){
 <script src="grafic7.js"></script>
 <script src="grafic8.js"></script>
 <script src="grafic9.js"></script>
+<script src="grafic10.js"></script>
 <script src="grafic11.js"></script>
 <script src="grafic12.js"></script>
 <script src="grafic13.js"></script>
@@ -452,6 +456,7 @@ $(document).ready(function () {
         grafic7();
         grafic8();
         grafic9();
+        grafic10();
         grafic11();
         grafic12();
         grafic13();
