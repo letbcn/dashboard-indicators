@@ -35,12 +35,7 @@ function calcula(valor){
     filtre_ppt = ppt.filter(element => element.nommuni == valor);
     filtre_estat_12 = estat_rius.filter(element => element.nommuni == valor);
     filtre_estat_18 = estat_rius.filter(element => element.nommuni_1 == valor);
-    filtre_cob56 = cob56.filter(element => element.field_1 == valor);
-    filtre_cob93 = cob93.filter(element => element.field_1 == valor);
-    filtre_cob00 = cob00.filter(element => element.field_1 == valor);
-    filtre_cob05 = cob05.filter(element => element.field_1 == valor);
-    filtre_cob09 = cob09.filter(element => element.field_1 == valor);
-    filtre_cob15 = cob15.filter(element => element.field_1 == valor);
+    filtre_cobertes = cobertes.filter(element => element.field_1 == valor);
     filtre_pob = poblacio.filter(element => element.categoria == valor);
     filtre_densitat = densitat.filter(element => element.categoria == valor);
     filtre_atur = atur.filter(element => element.nommuni== valor);
@@ -310,9 +305,9 @@ function omple(div){
                     temporalitat='2017-2021';
                     font='Servei Meteorològic de Catalunya.';
                     break;
-        case "2":  titol='Cobertes del sòl';
-                    texte= "Cobertes del sòl (% de superfície)";
-                    temporalitat='1956, 1993, 2000, 2005, 2009, 2015';
+        case "2":  titol='Usos del sòl';
+                    texte= "Usos del sòl (% de superfície)";
+                    temporalitat='1987, 1992, 1997, 2002, 2007, 2012,2017';
                     font='CREAF';
                     break;
         case "3":  titol='Incendis forestals';
@@ -441,7 +436,7 @@ $(document).ready(function () {
         munisAMB = munis.filter( element => element.AMB != "")
         munisB30 = munis.filter( element => element.B30 != "")
         munisRMB = munis.filter( element => element.RMB != "")
-        var listItems = '<option selected="selected" value="0">Total àmbit(36 municipis)</option>';
+        var listItems = '<option selected="selected" value="AMB">Total àmbit(36 municipis)</option>';
         for (var i = 0; i < munisAMB.length; i++) {
                 listItems += '<option value="' + munisAMB[i].AMB+ '">' + munisAMB[i].AMB+ '</option>';
             }
