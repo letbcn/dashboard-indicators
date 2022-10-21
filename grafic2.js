@@ -236,7 +236,7 @@ function pintar2() {
                 {
                     label: 'urbà',
                     data: [urba_87,urba_92,urba_97,urba_02,urba_07,urba_12,urba_17],
-                    backgroundColor: 'rgba(209,204,176, 1)',
+                    backgroundColor: 'rgba(255,0,0, 1)',
                     stack: 'Stack 0'
                 },
                 {
