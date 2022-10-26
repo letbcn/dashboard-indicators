@@ -120,7 +120,7 @@ function pintar6(){
                     stacked: true,
                     title: {
                         display: true,
-                        text: 'kw/h'
+                        text: 'kw/h per càpita'
                       }
                     },
             }
