@@ -30,7 +30,7 @@ function pintar16() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Immigració"
+                    text:titol16
                 },
                 legend:{
                     position:'bottom',
@@ -69,7 +69,7 @@ function pintar16() {
                     position: 'left',
                     title:{
                         display:true,
-                        text:["Població procedent de","països en desenvolupament(%)"]
+                        text:[escala16a,escala16b]
                     }
                     
                 }

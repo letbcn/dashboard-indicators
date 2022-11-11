@@ -222,85 +222,85 @@ function pintar2() {
             labels: ["1987","1992","1997","2002","2007","2012","2017"],
             datasets: [
                 {
-                    label: 'Aigües superficials',
+                    label: aguas,
                     data: [aigues_87,aigues_92,aigues_97,aigues_02,aigues_07,aigues_12,aigues_17],
                     backgroundColor: 'rgba(153,247,245, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: 'Infraestructures viàries',
+                    label: carre,
                     data: [vies_87,vies_92,vies_97,vies_02,vies_07,vies_12,vies_17],
                     backgroundColor: 'rgba(209,204,176, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: 'urbà',
+                    label: urba,
                     data: [urba_87,urba_92,urba_97,urba_02,urba_07,urba_12,urba_17],
                     backgroundColor: 'rgba(255,0,0, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: 'Conreus herbacis',
+                    label: herbacis,
                     data: [herbacis_87,herbacis_92,herbacis_97,herbacis_02,herbacis_07,herbacis_12,herbacis_17],
                     backgroundColor: 'rgba(65,206,0, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: 'Conreus llenyosos',
+                    label: llenyosos,
                     data: [llenyosos_87,llenyosos_92,llenyosos_97,llenyosos_02,llenyosos_07,llenyosos_12,llenyosos_17],
                     backgroundColor: 'rgba(255,255,140, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: 'Matollars',
+                    label: matoll,
                     data: [matollars_87,matollars_92,matollars_97,matollars_02,matollars_07,matollars_12,matollars_17],
                     backgroundColor: 'rgba(202,101,0, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: "Boscos d'escleròfil·les",
+                    label: boscos1,
                     data: [bosc1_87,bosc1_92,bosc1_97,bosc1_02,bosc1_07,bosc1_12,bosc1_17],
                     backgroundColor: 'rgba(149,206,0, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: 'Boscos de caducifolis',
+                    label: boscos2,
                     data: [bosc2_87,bosc2_92,bosc2_97,bosc2_02,bosc2_07,bosc2_12,bosc2_17],
                     backgroundColor: 'rgba(189,255,46, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: "Boscos d'acucifolis",
+                    label: boscos3,
                     data: [bosc3_87,bosc3_92,bosc3_97,bosc3_02,bosc3_07,bosc3_12,bosc3_17],
                     backgroundColor: 'rgba(28,156,76, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: "Vegetació de zones humides",
+                    label: humides,
                     data: [humides_87,humides_92,humides_97,humides_02,humides_07,humides_12,humides_17],
                     backgroundColor: 'rgba(50,211,156, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: "Zones amb vegetació escassa o nul·la",
+                    label: escassa,
                     data: [escassa_87,escassa_92,escassa_97,escassa_02,escassa_07,escassa_12,escassa_17],
                     backgroundColor: 'rgba(184,201,189, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: "Zones cremades",
+                    label: cremat,
                     data: [cremat_87,cremat_97,cremat_02,cremat_07,cremat_12,cremat_17],
                     backgroundColor: 'rgba(109,0,0, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: "Sorrals i platges",
+                    label: platja,
                     data: [platja_87,platja_92,platja_02,platja_07,platja_12,platja_17],
                     backgroundColor: 'rgba(255,255,201, 1)',
                     stack: 'Stack 0'
                 },
                 {
-                    label: "Sense dades",
+                    label: nodata,
                     data: [nodata_87,nodata_92,nodata_97,nodata_02,nodata_07,nodata_12,nodata_17],
                     backgroundColor: 'rgba(0,0,0, 1)',
                     stack: 'Stack 0'
@@ -359,7 +359,7 @@ function pintar2() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:'Usos del sòl'
+                    text:titol2
                 },
                 legend:{
                     position:'bottom',
@@ -390,7 +390,7 @@ function pintar2() {
                     stacked: true,
                     title: {
                         display: true,
-                        text: 'Superfície (%)'
+                        text: escala2
                       },
                     min:0,
                     max:100

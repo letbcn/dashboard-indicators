@@ -27,7 +27,7 @@ function pintar8(){
             plugins: {
                 title:{
                     display: 'true',
-                    text:'Generació de residus'
+                    text:titol8
                 },
                 legend:{
                     position:'bottom',
@@ -52,7 +52,7 @@ function pintar8(){
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'kg per càpita i dia'
+                        text: escala8
                       }
                 }
             }

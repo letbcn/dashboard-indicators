@@ -28,7 +28,7 @@ function pintar7(){
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Consum d'aigua"
+                    text:titol7
                 },
                 legend:{
                     position:'bottom',
@@ -56,7 +56,7 @@ function pintar7(){
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'm\u00B3 per càpita'
+                        text: escala7
                       }
                 }
             }

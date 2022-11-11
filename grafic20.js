@@ -36,7 +36,7 @@ function pintar20() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Innovació"
+                    text:titol20
                 },
                 legend:{
                     position:'bottom',
@@ -59,7 +59,7 @@ function pintar20() {
                     position: 'left',
                     title:{
                         display:true,
-                        text:["Nombre de patents europees","per 1000 habitants"]
+                        text:[escala20a,escala20b]
                     }
                     
                 }

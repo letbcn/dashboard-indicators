@@ -35,7 +35,7 @@ function pintar14() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Atur"
+                    text:titol14
                 },
                 legend:{
                     position:'bottom',
@@ -63,7 +63,7 @@ function pintar14() {
                     position: 'left',
                     title: {
                         display:true,
-                        text:"Persones a l'atur per 1000 habitants"
+                        text:escala14
                     }
                 }
             }

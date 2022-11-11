@@ -81,7 +81,7 @@ function pintar9() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:'Contaminació atmosfèrica'
+                    text:titol9
                 },
                 legend:{
                     position:'bottom',
@@ -95,7 +95,7 @@ function pintar9() {
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'Emission de pm10 i NO\u2082 (ppm)'
+                        text: escala9
                       }
                 }
             }

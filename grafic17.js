@@ -35,7 +35,7 @@ function pintar17() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Nivell Socioeconòmic"
+                    text:titol17
                 },
                 legend:{
                     position:'bottom',
@@ -58,7 +58,7 @@ function pintar17() {
                     position: 'left',
                     title:{
                         display:true,
-                        text:['Índex Socioeconòmic Territorial','(respecte al total de Catalunya)']
+                        text:[escala17a,escala17b]
                     },
                     suggestedMin: 80,
                     beginAtZero:false

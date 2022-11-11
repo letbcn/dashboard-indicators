@@ -31,7 +31,7 @@ function pintar4() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:'Funcionalitat del paisatge'
+                    text:titol4
                 },
                 legend:{
                     position:'bottom',
@@ -56,7 +56,7 @@ function pintar4() {
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'Índex de Connectivitat Ecològica',
+                        text: escala4,
                         fontStyle: 'bold'
                       }
                 },

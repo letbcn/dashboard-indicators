@@ -31,7 +31,7 @@ function pintar15() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Desigualtat"
+                    text:titol15
                 },
                 legend:{
                     position:'bottom',
@@ -59,7 +59,7 @@ function pintar15() {
                     position: 'left',
                     title:{
                         display:true,
-                        text:'Índex de Gini'
+                        text:escala15
                     }
                 }
             }

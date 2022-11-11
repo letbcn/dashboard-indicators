@@ -25,7 +25,7 @@ function pintar3(workbook) {
             plugins: {
                 title:{
                     display: 'true',
-                    text:'Incendis forestals'
+                    text:titol3
                 },
                 legend:{
                     position:'bottom',
@@ -54,7 +54,7 @@ function pintar3(workbook) {
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'Superfície cremada (hectàrees)'
+                        text: escala3
                       }
                 },
             }

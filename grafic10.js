@@ -27,7 +27,7 @@ function pintar10(){
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Gasos d'efecte hivernacle"
+                    text:titol10
                 },
                 legend:{
                     position:'bottom',
@@ -40,7 +40,7 @@ function pintar10(){
                 y: {
                     title: {
                         display: true,
-                        text: ['Emissions GEH(tCO\u00B2)','per càpita per municipi']
+                        text: [escala10a,escala10b]
                       }
                 },
             }

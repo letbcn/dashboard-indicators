@@ -31,7 +31,7 @@ function pintar1() {
                 
                 {
                     type: 'line',
-                    label: "Anomalia temperatura",
+                    label: atemp,
                     yAxisID: 'B',
                     data: data_temp[0],
                     borderColor: 'rgba(75, 192, 192,0)',
@@ -41,7 +41,7 @@ function pintar1() {
                 },
                 {
                     type: 'bar',
-                    label: "Anomalia Precipitació",
+                    label: aprec,
                     yAxisID: 'A',
                     data: data_ppt[0],
                     backgroundColor: 'rgba(68,114,196, 1)',
@@ -63,7 +63,7 @@ function pintar1() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:'Variabilitat climàtica'
+                    text:titol1
                 },
                 legend:{
                     position:'bottom',
@@ -78,7 +78,7 @@ function pintar1() {
                     position: 'left',
                     title: {
                         display: true,
-                        text: ['Anomalia de la precipitació', '(% variació mitjana)']
+                        text: [aprec, varper]
                       }
                 },
                 B: {
@@ -86,7 +86,7 @@ function pintar1() {
                     position: 'right',
                     title: {
                         display: true,
-                        text: ['Anomalia de la temperatura','(ºC variació mitjana)']
+                        text: [atemp,varper]
                       }
                 },
             }

@@ -35,7 +35,7 @@ function pintar18() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Habitatge"
+                    text:titol18
                 },
                 legend:{
                     position:'bottom',
@@ -58,7 +58,7 @@ function pintar18() {
                     position: 'left',
                     title:{
                         display:true,
-                        text:["Demanda d'habitatge protegit","per 1000 habitants"]
+                        text:[escala18a,escala18b]
                     }
                     
                 }

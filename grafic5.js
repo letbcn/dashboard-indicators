@@ -48,43 +48,43 @@ function pintar5() {
             datasets: [
                 {
                     type: 'bar',
-                   label: 'Molt bo',
+                   label: moltbo,
                     data: [valor_mb_12,valor_mb_18],
                     backgroundColor: 'rgb(146,208,80)'
                 },
                 {
                   type: 'bar',
-                 label: 'Bo',
+                 label: bo,
                   data: [valor_b_12,valor_b_18],
                   backgroundColor: 'rgb(84,130,53)'
               },
               {
                 type: 'bar',
-                label: 'Mediocre',
+                label: mediocre,
                 data: [valor_mediocre_12,valor_mediocre_18],
                 backgroundColor: 'rgb(255,192,0)'
               },
               {
                 type: 'bar',
-                label: 'Deficient',
+                label: deficient,
                 data: [valor_deficient_12,valor_deficient_18],
                 backgroundColor: 'rgb(255,102,0)'
               },
               {
                 type: 'bar',
-                label: 'Dolent',
+                label: dolent,
                 data: [valor_dolent_12,valor_dolent_18],
                 backgroundColor: 'rgb(222,0,0)'
               },
               {
                 type: 'bar',
-                label: 'Dades parcials',
+                label: parcials,
                 data:[valor_dp_12,valor_dp_18],
                 backgroundColor: 'rgb(222,235,247)'
               },
               {
                 type: 'bar',
-                label: 'Sense Controls',
+                label: nocontrols,
                 data: [valor_sc_12,valor_sc_18],
                 backgroundColor: 'rgb(222,235,247)'
               }
@@ -94,7 +94,7 @@ function pintar5() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Qualitat de l'aigua"
+                    text:titol5
                 },
                 legend:{
                     position:'bottom',
@@ -141,7 +141,7 @@ function pintar5() {
                   stacked: true,
                   title: {
                       display: true,
-                      text: 'Estat ecològic dels rius (%)'
+                      text: escala5
                     },
                   ticks: {
                       min: 0,

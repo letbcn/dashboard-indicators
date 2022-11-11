@@ -24,7 +24,7 @@ function pintar19() {
             datasets: [
                 {
                     type: 'bar',
-                    label: "Estudis baixos",
+                   // label: "Estudis baixos",
                     data: data_estudis[0],
                     backgroundColor: 'rgba(59,100,143,1)',
                 }/*,
@@ -41,7 +41,7 @@ function pintar19() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Formació"
+                    text:titol19
                 },
                 legend:{
                     position:'bottom',
@@ -87,7 +87,7 @@ function pintar19() {
                     stacked: true,
                     title:{
                         display:true,
-                        text:["Població amb estudis primaris","o sense estudis (%)"]
+                        text:[escala19a,escala19b]
                     }
                     },
             }

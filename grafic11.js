@@ -68,7 +68,7 @@ function pintar11() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:'Població'
+                    text:titol11
                 },
                 legend:{
                     position:'bottom',
@@ -82,7 +82,7 @@ function pintar11() {
                     position: 'left',
                     title: {
                         display: true,
-                        text: "Nombre d'habitants",
+                        text: escala11a,
                       },
                     ticks: {
                         beginAtZero: true
@@ -93,7 +93,7 @@ function pintar11() {
                     position: 'right',
                     title: {
                         display: true,
-                        text: 'Densitat de població (habitants/km\u00B2) '
+                        text: escala11b
                       },
                     beginAtZero: true
                     

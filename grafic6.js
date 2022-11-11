@@ -52,14 +52,14 @@ function pintar6(){
                 },*/
                 {
                     type: 'bar',
-                    label: "Gas per càpita",
+                    label: gaslabel,
                     data: data_gas[0],
                     spanGaps: true,
                     backgroundColor: 'rgba(91,155,213,1)',
                 },
                 {
                     type: 'bar',
-                    label: "Electricitat per càpita",
+                    label: eleclabel,
                     data: data_elec[0],
                     backgroundColor: 'rgba(99,99,99,1)'
                 }
@@ -89,7 +89,7 @@ function pintar6(){
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Consum d'energia"
+                    text:titol6
                 },
                 legend:{
                     position:'bottom',
@@ -120,7 +120,7 @@ function pintar6(){
                     stacked: true,
                     title: {
                         display: true,
-                        text: 'kw/h per càpita'
+                        text: escala6
                       }
                     },
             }

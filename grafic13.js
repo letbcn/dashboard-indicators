@@ -33,7 +33,7 @@ function pintar13() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Productivitat"
+                    text:titol13
                 },
                 legend:{
                     position:'bottom',
@@ -61,7 +61,7 @@ function pintar13() {
                     position: 'left',
                     title: {
                         display: true,
-                        text: 'PIB per càpita (milers €)'
+                        text: escala13
                       }
                 }
             }

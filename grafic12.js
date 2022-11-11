@@ -25,7 +25,7 @@ function pintar12() {
             datasets: [
                 {
                     type: 'bar',
-                    label: "Renda",
+                    //label: label12,
                     data: data_renda[0],
                     backgroundColor: 'rgba(91,155,213,1)',
                 }
@@ -36,7 +36,7 @@ function pintar12() {
             plugins: {
                 title:{
                     display: 'true',
-                    text:"Nivell de renda",
+                    text:titol12,
                     
                 },
                 legend:{
@@ -65,7 +65,7 @@ function pintar12() {
                     y: {
                     title: {
                         display: true,
-                        text: 'Renda per càpita (€)'
+                        text: escala12
                       }
                     },
             }
