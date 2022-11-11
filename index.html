@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js"></script>
@@ -327,7 +327,7 @@ function omple(div){
                     font="Agencia Catalana de l'Aigua (ACA)";
                     break;
         case "6":  titol="Consum d'energia ";
-                    texte= "Consum d'energia elèctrica i de gas natural en l'àmbit domèstic. Dades en kwh.";
+                    texte= "Consum d'energia elèctrica i de gas natural en l'àmbit domèstic. Dades en KWh.";
                     temporalitat='2013-2020 ';
                     font='IDESCAT';
                     break;
@@ -407,6 +407,7 @@ function omple(div){
     document.getElementById('contingut').innerHTML='<b>Descripció: </b>'+texte + '<br><b>Temporalitat</b>: '+ temporalitat + '<br><b>Font</b>: ' + font;
 }
 </script>
+<script src="idiomes.js"></script>
 <script src="grafic1.js"></script>
 <script src="grafic2.js"></script>
 <script src="grafic3.js"></script>
